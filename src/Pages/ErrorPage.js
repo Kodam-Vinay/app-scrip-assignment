@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
-const ErrorPage = () => {
+const ErrorPage = ({ error }) => {
   const navigate = useNavigate();
   return (
     <div className="each-page-container">
-      <h3>Something, Error Happend</h3>
+      <h3>Something, Error Happend +{error}</h3>
       <button
         type="button"
         onClick={() => navigate("/")}

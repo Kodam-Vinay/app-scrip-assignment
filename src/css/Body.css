@@ -1,18 +1,10 @@
-.flex {
-  display: flex;
-}
-.flex-row {
-  flex-direction: row;
-}
 .align-item-center {
   align-items: center;
 }
 .justify-content-center {
   justify-content: center;
 }
-.border {
-  border: 1px solid #252020;
-}
+
 .space-between {
   justify-content: space-between;
 }
@@ -53,7 +45,7 @@
   padding-bottom: 8px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .filter-button {
@@ -62,6 +54,7 @@
   border: 0;
   font-size: 16px;
   cursor: pointer;
+  width: 50%;
 }
 
 .recommended-filter {
@@ -77,6 +70,15 @@
 .recommended-filter > option {
   background: transparent;
 }
+
+.loader-container {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 @media screen and (min-width: 320px) {
   .dicover-products-text-para {
     width: 80%;
@@ -84,11 +86,20 @@
 }
 
 @media screen and (min-width: 500px) {
+  .flex {
+    display: flex;
+  }
+  .flex-row {
+    flex-direction: row;
+  }
   .dicover-products-text {
     font-size: 24px;
   }
   .dicover-products-text-para {
     width: 70%;
+  }
+  .recommended-filter {
+    width: 30%;
   }
 }
 
@@ -99,6 +110,9 @@
   .dicover-products-text-para {
     width: 50%;
   }
+  .recommended-filter {
+    width: 20%;
+  }
 }
 
 @media screen and (min-width: 900px) {
@@ -107,5 +121,8 @@
   }
   .dicover-products-text-para {
     width: 30%;
+  }
+  .recommended-filter {
+    width: 15%;
   }
 }

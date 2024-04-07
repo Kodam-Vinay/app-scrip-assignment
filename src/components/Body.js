@@ -1,36 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../css/Body.css";
 import Filter from "./Filter";
-import Contact from "./Contact";
-import Product from "./Product";
-
-const recommendedLists = [
-  {
-    id: "recommended",
-    value: "RECOMMENDED",
-  },
-  {
-    id: "newest_first",
-    value: "NEWEST FIRST",
-  },
-  {
-    id: "popular",
-    value: "POPULAR",
-  },
-  {
-    id: "price_high_to_low",
-    value: "PRICE: HIGH TO LOW",
-  },
-  {
-    id: "price_low_to_high",
-    value: "PRICE: HIGH TO LOW",
-  },
-];
+import Footer from "./Footer";
+import Products from "./Products";
+import useGetData from "../hooks/useGetData";
+import { API_URL, recommendedLists, sortResults } from "./constants";
+import ErrorPage from "../Pages/ErrorPage";
+import { CirclesWithBar } from "react-loader-spinner";
 
 const Body = () => {
+  const [productList, setProductList] = useState([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [selectedOption, setSelectedOption] = useState(recommendedLists[0].id);
   const [showFilter, setShowFilter] = useState(false);
-  console.log(selectedOption);
+  const apiUrl = API_URL;
+  useGetData({ apiUrl, setProductList, setIsError, setError, setLoading });
+  const data = sortResults({ productList, selectedOption });
+
+  useEffect(() => {
+    setProductList(data);
+  }, [selectedOption]);
+
+  if (isError) {
+    return <ErrorPage error={error} />;
+  }
   return (
     <div className="body-container">
       <div className="body-text-container">
@@ -70,11 +65,30 @@ const Body = () => {
           ))}
         </select>
       </div>
-      <div className="flex flex-row border ">
-        <Filter />
-        <Product />
+      <div className="flex flex-row border products-flex-col">
+        {showFilter && <Filter />}
+        {loading && !isError ? (
+          <div className="loader-container">
+            <CirclesWithBar
+              height="100"
+              width="100"
+              color="#4fa94d"
+              outerCircleColor="#4fa94d"
+              innerCircleColor="#4fa94d"
+              barColor="#4fa94d"
+              ariaLabel="circles-with-bar-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+          </div>
+        ) : !loading && !error ? (
+          <Products productsData={productList} />
+        ) : (
+          <p>No data Found</p>
+        )}
       </div>
-      <Contact />
+      <Footer />
     </div>
   );
 };
