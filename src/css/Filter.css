@@ -1,8 +1,41 @@
 .container-filter {
   display: flex;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  justify-content: space-between;
+  padding: 5px;
+  cursor: pointer;
 }
+
+.arrow-icon {
+  width: 20px;
+}
+
+.options-container {
+  margin-top: 5px;
+}
+
 .custom-filter-btn {
   background-color: #fff;
-  border: #fff;
-  color: #c1c1c1;
+  border: 1px solid transparent;
+  color: #333;
+  padding: 5px 10px;
+
+  cursor: pointer;
+}
+
+.filter {
+  /* border: 1px solid #ccc; */
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.filter-name {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.show-all-filters {
+  margin-bottom: 10px;
 }

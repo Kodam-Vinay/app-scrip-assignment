@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../css/Body.css";
 import Filter from "./Filter";
 import Contact from "./Contact";
+import Product from "./Product";
 
 const recommendedLists = [
   {
@@ -69,7 +70,10 @@ const Body = () => {
           ))}
         </select>
       </div>
-      <Filter />
+      <div className="flex flex-row border ">
+        <Filter />
+        <Product />
+      </div>
       <Contact />
     </div>
   );

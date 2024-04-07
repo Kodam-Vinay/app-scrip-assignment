@@ -64,10 +64,12 @@ const CollapsibleFilterCategory = ({ name, options }) => {
   };
 
   return (
-    <div>
+    <div className="filter">
       <div className="container-filter" onClick={toggleCollapse}>
-        <label>{name}:</label>
-        <div>{collapsed ? downArrowSVG : upArrowSVG}</div>
+        <span className="filter-name">{name}:</span>
+        <div className="arrow-icon">
+          {collapsed ? downArrowSVG : upArrowSVG}
+        </div>
       </div>
       <div>
         <p>{getSelectedText()}</p>
@@ -80,7 +82,7 @@ const CollapsibleFilterCategory = ({ name, options }) => {
       )}
 
       {!collapsed && (
-        <div>
+        <div className="options-container">
           {options.map((option, index) => (
             <div key={index}>
               <input
@@ -117,14 +119,14 @@ const CollapsibleFilter = () => {
 
   return (
     <div>
-      <div>
+      <div className="show-all-filters">
         <label>
           <input
             type="checkbox"
             checked={showAllFilters}
             onChange={handleShowAllFiltersChange}
           />
-          Customizble
+          Customizable
         </label>
       </div>
       {showAllFilters &&
