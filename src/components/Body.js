@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "../css/Body.css";
+import Filter from "./Filter";
+import Contact from "./Contact";
 
 const recommendedLists = [
   {
@@ -38,6 +40,7 @@ const Body = () => {
           dolor.
         </p>
       </div>
+
       <div className="body-filter-header-container">
         <button
           type="button"
@@ -66,6 +69,8 @@ const Body = () => {
           ))}
         </select>
       </div>
+      <Filter />
+      <Contact />
     </div>
   );
 };

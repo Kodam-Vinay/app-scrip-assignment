@@ -1,4 +1,6 @@
 .body-container {
+  height: 85%;
+  overflow-y: auto;
 }
 
 .body-text-container {
@@ -8,6 +10,7 @@
   color: #252020;
   margin-top: 10px;
   text-align: center;
+  padding: 5px;
 }
 
 .dicover-products-text {

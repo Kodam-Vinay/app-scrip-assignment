@@ -1,0 +1,8 @@
+.container-filter {
+  display: flex;
+}
+.custom-filter-btn {
+  background-color: #fff;
+  border: #fff;
+  color: #c1c1c1;
+}
